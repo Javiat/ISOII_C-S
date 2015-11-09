@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Vector;
 
 import javax.swing.JFrame;
@@ -115,7 +116,9 @@ public class AplicacionPrincipal extends JFrame {
 		try{
 			//DefaultListModel dlm=new DefaultListModel();
 			// Apertura del fichero y creacion de BufferedReader
-			File archivo = new File("C:/Users/Javier/Worksapce mars/ISOII_AM/src/presentacion/lista.txt");
+
+			URL is = getClass().getResource("lista.txt");
+			File archivo = new File(is.getPath());
 			//File archivo = new File("/presentacion/lista.txt");
 			FileReader fr = new FileReader (archivo);
 			BufferedReader br = new BufferedReader(fr);
@@ -137,9 +140,8 @@ public class AplicacionPrincipal extends JFrame {
 	
 	private class BtnAñadirActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			Contacto contactos=new Contacto(txtNombre.getText());
-			modelo.addElement(contactos.getNombre());
-			//list.setModel(modelo);
+				Contacto contactos=new Contacto(txtNombre.getText());
+				modelo.addElement(contactos.getNombre());
 		}
 	}
 	private class BtnModificarActionListener implements ActionListener {
