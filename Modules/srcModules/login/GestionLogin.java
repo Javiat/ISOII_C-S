@@ -1,3 +1,6 @@
+import dominio.Contacto;
+import presentacion.AplicacionPrincipal;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;

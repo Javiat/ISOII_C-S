@@ -1,7 +1,6 @@
+/añadirContacto/
+/BorrarContacto/
+/LeerFichero/
+/login/
+/modificarContacto/
 /dominio/
-/presentacion/
-/GestionAñadirContacto.class
-/GestionModificarContacto.class
-/GestionBorrarContacto.class
-/GestionLeerFichero.class
-/GestionLogin.class
