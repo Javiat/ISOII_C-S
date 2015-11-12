@@ -1,5 +1,6 @@
 package presentacion;
 import persistencia.LectorFichero;
+import Comunicacion.Comunicacion;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.io.BufferedReader;
@@ -44,7 +45,8 @@ public class AplicacionPrincipal extends JFrame {
 	private JLabel lblNombre;
 	private JTextField txtNombre;
 	private DefaultListModel modelo = new DefaultListModel();
-	
+	public boolean llamada;
+	public int comunicacion;
 	public JList getList() {
 		return list;
 	}
@@ -159,34 +161,36 @@ public class AplicacionPrincipal extends JFrame {
 			catch (IOException ioe){
 				System.out.println("Problemas mientras se leía el archivo");
 			}
-		
-	
-			
-			
 	
 	}
 	
 	
 	private class BtnAñadirActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-				Contacto contactos=new Contacto(txtNombre.getText());
-				modelo.addElement(contactos.getNombre());
+				if(comprobarComunicacion(comunicacion)==true){
+					Contacto contactos=new Contacto(txtNombre.getText());
+					modelo.addElement(contactos.getNombre());
+				}
 		}
 	}
 	private class BtnModificarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			int index = list.getSelectedIndex();
-			modelo.remove(index);
-			Contacto contactos=new Contacto(txtNombre.getText());
-			modelo.add(index,contactos.getNombre());
-			list.setModel(modelo);
+			if(comprobarComunicacion(comunicacion)==true){
+				int index = list.getSelectedIndex();
+				modelo.remove(index);
+				Contacto contactos=new Contacto(txtNombre.getText());
+				modelo.add(index,contactos.getNombre());
+				list.setModel(modelo);
+			}
 		}
 	}
 	private class BtnBorrarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			int index = list.getSelectedIndex();
-			modelo.remove(index);
-			list.setModel(modelo);
+			if(comprobarComunicacion(comunicacion)==true){
+				int index = list.getSelectedIndex();
+				modelo.remove(index);
+				list.setModel(modelo);
+			}
 		}
 	}
 	
