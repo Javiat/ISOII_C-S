@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class agenda {
+public class GUILogin {
 
 	private JFrame frame;
 	private JPanel panel;
@@ -47,7 +47,7 @@ public class agenda {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					agenda window = new agenda();
+					GUILogin window = new GUILogin();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +59,7 @@ public class agenda {
 	/**
 	 * Create the application.
 	 */
-	public agenda() {
+	public GUILogin() {
 		initialize();
 	}
 
@@ -80,7 +80,7 @@ public class agenda {
 			{
 				label = new JLabel("");
 				label.setSize(new Dimension(100, 100));
-				label.setIcon(new ImageIcon(agenda.class.getResource("/presentacion/contactos-de-la-agenda-icono-5659-128.png")));
+				label.setIcon(new ImageIcon(GUILogin.class.getResource("/presentacion/contactos-de-la-agenda-icono-5659-128.png")));
 				label.setBounds(10, 42, 135, 140);
 				panel.add(label);
 			}
@@ -92,7 +92,7 @@ public class agenda {
 				panel_1.setLayout(null);
 				{
 					lblUsuario = new JLabel("Usuario:");
-					lblUsuario.setBounds(11, 24, 40, 14);
+					lblUsuario.setBounds(11, 24, 70, 14);
 					panel_1.add(lblUsuario);
 				}
 				{
@@ -105,7 +105,7 @@ public class agenda {
 				{
 					lblPassword = new JLabel("Contraseña");
 					lblPassword.setEnabled(false);
-					lblPassword.setBounds(10, 71, 56, 14);
+					lblPassword.setBounds(10, 71, 71, 14);
 					panel_1.add(lblPassword);
 				}
 				{

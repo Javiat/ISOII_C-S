@@ -1,6 +1,3 @@
-/añadirContacto/
-/BorrarContacto/
-/LeerFichero/
-/login/
-/modificarContacto/
-/dominio/
+/persistencia/
+/presentacion/
+/lista.txt

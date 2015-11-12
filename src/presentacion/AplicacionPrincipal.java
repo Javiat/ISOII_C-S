@@ -1,5 +1,5 @@
 package presentacion;
-
+import persistencia.LectorFichero;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.io.BufferedReader;
@@ -31,6 +31,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.ImageIcon;
 
 public class AplicacionPrincipal extends JFrame {
 
@@ -42,7 +43,24 @@ public class AplicacionPrincipal extends JFrame {
 	private JPanel cuestionario;
 	private JLabel lblNombre;
 	private JTextField txtNombre;
-	DefaultListModel modelo = new DefaultListModel();
+	private DefaultListModel modelo = new DefaultListModel();
+	
+	public JList getList() {
+		return list;
+	}
+
+	public void setList(JList list) {
+		this.list = list;
+	}
+
+	public DefaultListModel getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(DefaultListModel modelo) {
+		this.modelo = modelo;
+	}
+
 	/**
 	 * Launch the application.
 	 */
@@ -57,6 +75,10 @@ public class AplicacionPrincipal extends JFrame {
 				}
 			}
 		});
+		
+		//LectorFichero lf=new LectorFichero();
+		//lf.leerFichero();
+		
 	}
 
 	/**
@@ -71,20 +93,23 @@ public class AplicacionPrincipal extends JFrame {
 		contentPane.setLayout(null);
 		{
 			btnAñadir = new JButton("Añadir");
+			btnAñadir.setIcon(new ImageIcon(AplicacionPrincipal.class.getResource("/presentacion/anadir-mas-icono-6734-48.png")));
 			btnAñadir.addActionListener(new BtnAñadirActionListener());
-			btnAñadir.setBounds(374, 70, 117, 29);
+			btnAñadir.setBounds(374, 70, 129, 29);
 			contentPane.add(btnAñadir);
 		}
 		{
 			btnModificar = new JButton("Modificar");
+			btnModificar.setIcon(new ImageIcon(AplicacionPrincipal.class.getResource("/presentacion/dibujo-a-lapiz-modificar-escribir-icono-8118-48.png")));
 			btnModificar.addActionListener(new BtnModificarActionListener());
-			btnModificar.setBounds(374, 134, 117, 29);
+			btnModificar.setBounds(374, 134, 129, 29);
 			contentPane.add(btnModificar);
 		}
 		{
 			btnBorrar = new JButton("Borrar");
+			btnBorrar.setIcon(new ImageIcon(AplicacionPrincipal.class.getResource("/presentacion/eliminar.png")));
 			btnBorrar.addActionListener(new BtnBorrarActionListener());
-			btnBorrar.setBounds(374, 206, 117, 29);
+			btnBorrar.setBounds(374, 206, 129, 29);
 			contentPane.add(btnBorrar);
 		}
 		{
@@ -111,32 +136,36 @@ public class AplicacionPrincipal extends JFrame {
 			}
 		}
 		
-		//DefaultListModel model = new DefaultListModel();
-			
-		try{
-			//DefaultListModel dlm=new DefaultListModel();
-			// Apertura del fichero y creacion de BufferedReader
+			//DefaultListModel model = new DefaultListModel();
+			try{
+				//DefaultListModel dlm=new DefaultListModel();
+				// Apertura del fichero y creacion de BufferedReader
 
-			URL is = getClass().getResource("lista.txt");
-			File archivo = new File(is.getPath());
-			//File archivo = new File("/presentacion/lista.txt");
-			FileReader fr = new FileReader (archivo);
-			BufferedReader br = new BufferedReader(fr);
-			// Lectura del fichero linea a linea
-			String linea;
-			while((linea=br.readLine())!=null) {
-				modelo.addElement(linea);
-				list.setModel(modelo);
-				
+				URL is = getClass().getResource("lista.txt");
+				File archivo = new File(is.getPath());
+				//File archivo = new File("/presentacion/lista.txt");
+				FileReader fr = new FileReader (archivo);
+				BufferedReader br = new BufferedReader(fr);
+				// Lectura del fichero linea a linea
+				String linea;
+				while((linea=br.readLine())!=null) {
+					modelo.addElement(linea);
+					list.setModel(modelo);
+					
+				}
+				br.close();
+				//System.out.println("Fichero leído : " + file.getName() + ".");
 			}
-			br.close();
-			//System.out.println("Fichero leído : " + file.getName() + ".");
-		}
-		catch (IOException ioe){
-			System.out.println("Problemas mientras se leía el archivo");
-		} 
+			catch (IOException ioe){
+				System.out.println("Problemas mientras se leía el archivo");
+			}
 		
+	
+			
+			
+	
 	}
+	
 	
 	private class BtnAñadirActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
